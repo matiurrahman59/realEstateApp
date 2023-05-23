@@ -2,6 +2,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 
+import { StatusBar } from 'expo-status-bar';
 import FavouriteScreen from '../features/favourites/screen/favourite.screen';
 import ProfileScreen from '../features/profile/screen/profile.screen';
 import RealEstateScreen from '../features/realestate/screen/realestate.screen';
