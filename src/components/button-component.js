@@ -11,7 +11,7 @@ const TouchableButton = ({
   disabled,
 }) => {
   return (
-    <Pressable
+    <TouchableOpacity
       className={`bg-primary rounded-lg justify-center ${contentContainerStyle}`}
       disabled={disabled}
       onPress={onPress}
@@ -21,7 +21,7 @@ const TouchableButton = ({
         <Text className={`text-white text-base  ${labelStyle}`}>{label}</Text>
         {prependComponent}
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

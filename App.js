@@ -1,23 +1,38 @@
-// import { Lato_400Regular, useFonts as useLato } from '@expo-google-fonts/lato';
-// import {
-//   Raleway_400Regular,
-//   useFonts as useRaleway,
-// } from '@expo-google-fonts/raleway';
+import { Lato_400Regular, useFonts as useLato } from '@expo-google-fonts/lato';
+import {
+  Raleway_400Regular,
+  useFonts as useRaleway,
+} from '@expo-google-fonts/raleway';
+
+import {
+  Montserrat_400Regular,
+  useFonts as useMontserrat,
+} from '@expo-google-fonts/montserrat';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 
 import { Navigator } from './src/navigation';
 
 export default function App() {
-  // const [raleWayFontLoaded] = useRaleway({
-  //   Raleway_400Regular,
-  // });
+  const [raleWayFontLoaded] = useRaleway({
+    Raleway_400Regular,
+  });
 
-  // const [latoFontLoaded] = useLato({
-  //   Lato_400Regular,
-  // });
+  const [latoFontLoaded] = useLato({
+    Lato_400Regular,
+  });
 
-  // if (!raleWayFontLoaded || !latoFontLoaded) {
-  //   return null;
-  // }
+  const [MontserratFontLoaded] = useMontserrat({
+    Montserrat_400Regular,
+  });
 
-  return <Navigator />;
+  if (!raleWayFontLoaded || !latoFontLoaded || !MontserratFontLoaded) {
+    return null;
+  }
+
+  return (
+    <>
+      <Navigator />
+      <ExpoStatusBar style='auto' />
+    </>
+  );
 }

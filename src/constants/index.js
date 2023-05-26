@@ -1,6 +1,6 @@
 import { Dimensions, StatusBar } from 'react-native';
-const { width, height } = Dimensions.get('window');
 
+const { width, height } = Dimensions.get('window');
 export const statusBar = StatusBar.currentHeight || 0;
 
 export const DEVICE = {
@@ -11,6 +11,7 @@ export const DEVICE = {
 
 export const BrandLogo = require('../assets/images/logo.png');
 export const welcomeImage = require('../assets/images/Onboarding/welcome-image.png');
+const userIMage = require('../assets/images/user-2.png');
 
 const onBoardingImages = {
   image1: require('../assets/images/Onboarding/image-1.png'),
@@ -105,16 +106,24 @@ export const topLocations = [
     ],
     estates: [
       {
+        id: 1,
         name: 'Luxury Apartment',
         address: '123 Main Street',
-        price: 2000000,
+        price: 290,
         rating: 4.8,
+        type: 'Apartment',
+        imageUrl:
+          'https://images.unsplash.com/photo-1549877452-9c387954fbc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
       {
+        id: 2,
         name: 'Spacious Condo',
         address: '456 Park Avenue',
-        price: 1500000,
+        price: 290,
         rating: 4.5,
+        type: 'Villa',
+        imageUrl:
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -129,16 +138,24 @@ export const topLocations = [
     ],
     estates: [
       {
+        id: 3,
         name: 'Modern Villa',
         address: '789 Ocean Drive',
-        price: 3000000,
+        price: 290,
         rating: 4.9,
+        type: 'Apartment',
+        imageUrl:
+          'https://images.unsplash.com/photo-1549877452-9c387954fbc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
       {
+        id: 4,
         name: 'Charming Bungalow',
         address: '234 Sunset Boulevard',
-        price: 1200000,
+        price: 290,
         rating: 4.2,
+        type: 'House',
+        imageUrl:
+          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -153,16 +170,24 @@ export const topLocations = [
     ],
     estates: [
       {
+        id: 5,
         name: 'Townhouse Residence',
         address: '10 Downing Street',
-        price: 5000000,
+        price: 290,
         rating: 4.7,
+        type: 'Villa',
+        imageUrl:
+          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
       {
+        id: 6,
         name: 'Penthouse Suite',
         address: '1 London Bridge',
-        price: 4000000,
+        price: 290,
         rating: 4.6,
+        type: 'Apartment',
+        imageUrl:
+          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -177,16 +202,24 @@ export const topLocations = [
     ],
     estates: [
       {
+        id: 7,
         name: 'Luxury Apartment',
         address: '123 Main Street',
-        price: 2000000,
+        price: 290,
         rating: 4.8,
+        type: 'Villa',
+        imageUrl:
+          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
       {
+        id: 8,
         name: 'Spacious Condo',
         address: '456 Park Avenue',
-        price: 1500000,
+        price: 290,
         rating: 4.5,
+        type: 'Apartment',
+        imageUrl:
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -201,16 +234,24 @@ export const topLocations = [
     ],
     estates: [
       {
+        id: 9,
         name: 'Modern Villa',
         address: '789 Ocean Drive',
-        price: 3000000,
+        price: 290,
         rating: 4.9,
+        type: 'House',
+        imageUrl:
+          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
       {
+        id: 10,
         name: 'Charming Bungalow',
         address: '234 Sunset Boulevard',
-        price: 1200000,
+        price: 290,
         rating: 4.2,
+        type: 'Apartment',
+        imageUrl:
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -274,6 +315,31 @@ export const topAgents = [
   },
 ];
 
+export const activityDetails = [
+  {
+    id: 1,
+    title: 'Listings',
+    value: 30,
+  },
+  {
+    id: 2,
+    title: 'Sold',
+    value: 12,
+  },
+  {
+    id: 3,
+    title: 'Reviews',
+    value: 28,
+  },
+];
+
+export const userData = {
+  name: 'Mathew Adam',
+  mail: 'mathew@email.com',
+  phone: '+62 112-3288-9111',
+  imageUrl: userIMage,
+};
+
 export default {
   welcomeImage,
   onBoarding,
@@ -284,4 +350,6 @@ export default {
   categoryList,
   topLocations,
   topAgents,
+  activityDetails,
+  userData,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
+import DefaultText from '../../../components/defaulttext-componet';
 
 const TopAgents = ({ topAgents }) => {
   return (
@@ -14,9 +15,9 @@ const TopAgents = ({ topAgents }) => {
             <View className='bg-gray--3 p-1 rounded-full'>
               <Avatar.Image size={70} source={{ uri: item.imageUrl }} />
             </View>
-            <Text className='font-medium text-center text-[10px] mt-2 text-dark--2 tracking-wide'>
+            <DefaultText className='font-medium text-center text-xs mt-2'>
               {item.name}
-            </Text>
+            </DefaultText>
           </TouchableOpacity>
         );
       }}

@@ -1,16 +1,18 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import DefaultText from './defaulttext-componet';
 
-const SectionHeader = ({ leftTitle, rightTitle }) => {
+const SectionHeader = ({ leftTitle, rightTitle, style, rest }) => {
+  const defaultStyles = 'font-bold text-[18px] font-lato leading-[22px]';
+  const mergedStyles = `${defaultStyles} ${style}`;
+
   return (
     <View className='flex-row justify-between items-center pr-6 mb-5'>
-      <Text className='font-bold text-[18px] text-dark--2 leading-[22px] tracking-wide'>
-        {leftTitle}
-      </Text>
+      <DefaultText className={mergedStyles}>{leftTitle}</DefaultText>
       {rightTitle && (
-        <Text className='font-semibold text-xs text-secondary  tracking-wide'>
+        <DefaultText className='font-semibold text-xs text-secondary'>
           {rightTitle}
-        </Text>
+        </DefaultText>
       )}
     </View>
   );

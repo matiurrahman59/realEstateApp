@@ -18,8 +18,8 @@ const CategoryList = ({ category }) => {
               }`}
             >
               <Text
-                className={`text-[10px] ${
-                  isActive ? 'text-white font-bold' : 'text-dark--2 font-medium'
+                className={`text-xs tracking-wide font-raleway ${
+                  isActive ? 'text-white font-bold' : 'font-medium'
                 }`}
               >
                 {item.title}
