@@ -8,7 +8,7 @@ import {
   Montserrat_400Regular,
   useFonts as useMontserrat,
 } from '@expo-google-fonts/montserrat';
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { StatusBar } from 'expo-status-bar';
 
 import { Navigator } from './src/navigation';
 
@@ -32,7 +32,7 @@ export default function App() {
   return (
     <>
       <Navigator />
-      <ExpoStatusBar style='auto' />
+      <StatusBar style='auto' />
     </>
   );
 }

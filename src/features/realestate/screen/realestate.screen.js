@@ -43,7 +43,7 @@ const RealEstateScreen = () => {
             paddingBottom: 20,
           }}
         >
-          <View className='px-5'>
+          <View className='px-5 pt-2'>
             {/* Top header */}
             <View className='h-[50px]'>
               <View className='flex-row items-center justify-between'>

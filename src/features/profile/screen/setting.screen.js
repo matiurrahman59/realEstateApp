@@ -65,7 +65,7 @@ const SettingScreen = ({ navigation, route }) => {
               className='h-[25px] w-[25px] rounded-full'
             />
             <DefaultText className='font-lato font-semibold text-sm leading-[14px]'>
-              UnLink
+              Link
             </DefaultText>
           </TouchableOpacity>
         </View>

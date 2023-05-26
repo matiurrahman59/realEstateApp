@@ -1,19 +1,11 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { useLayoutEffect, useMemo, useState } from 'react';
-import {
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-  useWindowDimensions,
-} from 'react-native';
-import { SceneMap, TabBar, TabView } from 'react-native-tab-view';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
+import CardInfo from '../../../components/cardinfo-component';
 import DefaultText from '../../../components/defaulttext-componet';
 import SectionHeader from '../../../components/seactionheader-component';
 import { activityDetails, topLocations, userData } from '../../../constants';
-import NearbyEstates from '../../realestate/components/nearbyestates-component';
 import CustomTab from '../components/customtab-component';
 import UserProfile from '../components/userprofile-component';
 
@@ -76,7 +68,11 @@ const ProfileScreen = ({ navigation }) => {
               leftTitle={`${featuredEstateList?.length} transactions`}
               style='font-medium'
             />
-            <NearbyEstates featuredList={featuredEstateList} />
+            <View className='flex-row justify-around flex-wrap'>
+              {featuredEstateList?.map((item) => (
+                <CardInfo item={item} key={item.id} />
+              ))}
+            </View>
           </View>
         )}
         {selectedTab === 1 && (
