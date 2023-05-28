@@ -1,12 +1,19 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
+
 import DefaultText from './defaulttext-componet';
 
 const CardInfo = ({ item }) => {
+  const navigation = useNavigation();
+
   return (
-    <TouchableOpacity className='p-2 rounded-3xl space-y-3 max-w-[200px] bg-gray--3 mb-3'>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('EstateDetails', item)}
+      className='p-2 rounded-3xl space-y-3 max-w-[200px] bg-gray--3 mb-3'
+    >
       <View className='relative '>
         <Image
           source={{ uri: item.imageUrl }}

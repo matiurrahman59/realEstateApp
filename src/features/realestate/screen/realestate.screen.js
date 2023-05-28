@@ -21,7 +21,7 @@ import TopLocations from '../components/toplocations-component';
 
 const userIMage = require('../../../assets/images/user-1.png');
 
-const RealEstateScreen = () => {
+const RealEstateScreen = ({ navigation }) => {
   const [text, setText] = useState('');
   const { colorScheme, setColorScheme } = useColorScheme();
 
@@ -107,6 +107,7 @@ const RealEstateScreen = () => {
               <SectionHeader
                 leftTitle='Featured Estates'
                 rightTitle='view all'
+                onPress={() => navigation.navigate('FeatureList')}
               />
               <FeaturedEstates featuredList={featuredEstateList} />
             </View>
@@ -115,7 +116,11 @@ const RealEstateScreen = () => {
           {/* Top locations */}
           <View className='pl-6 mt-9'>
             <View className='mb-9'>
-              <SectionHeader leftTitle='Top Locations' rightTitle='explore' />
+              <SectionHeader
+                leftTitle='Top Locations'
+                rightTitle='explore'
+                onPress={() => navigation.navigate('TopLocation')}
+              />
               <TopLocations topLocations={topLocations} />
             </View>
 

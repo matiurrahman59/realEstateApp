@@ -26,7 +26,7 @@ const FavouriteScreen = ({ navigation }) => {
       headerRight: () => (
         <TouchableOpacity
           onPress={() => console.log('favourite')}
-          className='mr-6 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'
+          className='mr-4 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'
         >
           <Avatar.Icon
             icon='trash-can-outline'
@@ -42,7 +42,9 @@ const FavouriteScreen = ({ navigation }) => {
   return (
     <ScrollView className=' flex-1 bg-white pt-5'>
       <View className='px-6 flex-row justify-between items-center mb-5'>
-        <DefaultText className='font-bold'>0 estates</DefaultText>
+        <DefaultText className='font-medium font-lato leading-[22px] text-lg'>
+          {`${featuredEstateList.length} estates`}
+        </DefaultText>
         <View className='flex-row items-center justify-between bg-gray--3 rounded-full p-2'>
           <TouchableOpacity
             onPress={() => handleTabPress('vertical')}

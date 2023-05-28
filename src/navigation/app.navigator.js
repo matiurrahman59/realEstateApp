@@ -1,27 +1,30 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { View } from 'react-native';
 
-import { StatusBar } from 'expo-status-bar';
 import FavouriteScreen from '../features/favourites/screen/favourite.screen';
 import ProfileScreen from '../features/profile/screen/profile.screen';
+import SettingScreen from '../features/profile/screen/setting.screen';
+import EstateDetailsScreen from '../features/realestate/screen/details.screen';
+import FeatureListScreen from '../features/realestate/screen/featurelist.screen';
 import RealEstateScreen from '../features/realestate/screen/realestate.screen';
+import TopLocationScreen from '../features/realestate/screen/toplocation.screen';
 import SearchScreen from '../features/search/screen/search.screen';
-import ProfileNavigator from './profile.navigator';
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const tabBarOptions = {
+  tabBarShowLabel: false,
   tabBarActiveTintColor: '#234F68',
   tabBarInactiveTintColor: '#252B5C',
   tabBarHideOnKeyboard: 'true',
 };
 
-const createScreenOptions = ({ route }) => {
+const createTabbedScreenOptions = ({ route }) => {
   return {
-    headerShown: false,
-    tabBarShowLabel: false,
     headerTitleAlign: 'center',
     headerTitleStyle: {
       color: '#252B5C',
@@ -60,21 +63,81 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-const AppNavigator = () => {
+const HomeTabs = () => {
   return (
-    <Tab.Navigator screenOptions={createScreenOptions}>
-      <Tab.Screen name='Home' component={RealEstateScreen} />
-      <Tab.Screen name='Search' component={SearchScreen} />
+    <Tab.Navigator screenOptions={createTabbedScreenOptions}>
+      <Tab.Screen
+        name='Home'
+        component={RealEstateScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name='Search'
+        component={SearchScreen}
+        options={{
+          headerTitle: 'Search results',
+        }}
+      />
       <Tab.Screen
         name='Favourites'
         options={{
           headerTitle: 'My favorite',
-          headerShown: true,
         }}
         component={FavouriteScreen}
       />
-      <Tab.Screen name='User' component={ProfileNavigator} />
+      <Stack.Screen
+        name='User'
+        component={ProfileScreen}
+        options={{
+          headerTitle: 'Profile',
+        }}
+      />
     </Tab.Navigator>
+  );
+};
+
+const AppNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name='MainScreen'
+        options={{
+          headerShown: false,
+        }}
+        component={HomeTabs}
+      />
+      <Stack.Screen
+        name='Setting'
+        options={{
+          headerTitle: 'Edit favorite',
+          headerTitleAlign: 'center',
+        }}
+        component={SettingScreen}
+      />
+      <Stack.Screen
+        name='FeatureList'
+        options={{
+          headerTitle: '',
+        }}
+        component={FeatureListScreen}
+      />
+      <Stack.Screen
+        name='TopLocation'
+        options={{
+          headerTitle: '',
+        }}
+        component={TopLocationScreen}
+      />
+      <Stack.Screen
+        name='EstateDetails'
+        options={{
+          headerShown: false,
+        }}
+        component={EstateDetailsScreen}
+      />
+    </Stack.Navigator>
   );
 };
 

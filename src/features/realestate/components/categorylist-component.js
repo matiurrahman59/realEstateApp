@@ -17,13 +17,15 @@ const CategoryList = ({ category }) => {
                 isActive ? 'bg-secondary' : 'bg-gray--3'
               }`}
             >
-              <Text
-                className={`text-xs tracking-wide font-raleway ${
-                  isActive ? 'text-white font-bold' : 'font-medium'
-                }`}
-              >
-                {item.title}
-              </Text>
+              <View>
+                <Text
+                  className={`text-xs tracking-wide font-raleway ${
+                    isActive ? 'text-white font-bold' : 'font-medium'
+                  }`}
+                >
+                  {item.title}
+                </Text>
+              </View>
             </TouchableOpacity>
           );
         })}

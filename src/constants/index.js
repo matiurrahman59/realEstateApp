@@ -11,7 +11,9 @@ export const DEVICE = {
 
 export const BrandLogo = require('../assets/images/logo.png');
 export const welcomeImage = require('../assets/images/Onboarding/welcome-image.png');
-const userIMage = require('../assets/images/user-2.png');
+export const userIMage = require('../assets/images/user-2.png');
+export const errIcon = require('../assets/images/errIcon.png');
+export const vrIcon = require('../assets/images/vrIcon.png');
 
 const onBoardingImages = {
   image1: require('../assets/images/Onboarding/image-1.png'),
@@ -352,4 +354,6 @@ export default {
   topAgents,
   activityDetails,
   userData,
+  errIcon,
+  vrIcon,
 };
