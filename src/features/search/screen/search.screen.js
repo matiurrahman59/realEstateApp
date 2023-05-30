@@ -29,7 +29,7 @@ const SearchScreen = ({ navigation }) => {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
-          onPress={() => navigation.navigate('Setting', userData)}
+          onPress={() => console.log('filter search')}
           className='mr-4 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'
         >
           <FontAwesome name='sliders' size={24} color='#252B5C' />

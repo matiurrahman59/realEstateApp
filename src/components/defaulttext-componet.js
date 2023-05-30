@@ -1,7 +1,8 @@
 import { Text } from 'react-native';
 
 const DefaultText = ({ children, className, ...rest }) => {
-  const defaultStyles = 'font-raleway tracking-wide text-defaultColor';
+  const defaultStyles =
+    'font-raleway tracking-wide text-defaultColor text-xs leading-[14px]';
   const mergedStyles = `${defaultStyles} ${className}`;
 
   return (

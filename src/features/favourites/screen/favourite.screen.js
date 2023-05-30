@@ -24,10 +24,7 @@ const FavouriteScreen = ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
-          onPress={() => console.log('favourite')}
-          className='mr-4 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'
-        >
+        <TouchableOpacity className='mr-4 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'>
           <Avatar.Icon
             icon='trash-can-outline'
             size={50}

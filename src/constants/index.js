@@ -15,7 +15,7 @@ export const userIMage = require('../assets/images/user-2.png');
 export const errIcon = require('../assets/images/errIcon.png');
 export const vrIcon = require('../assets/images/vrIcon.png');
 
-const onBoardingImages = {
+export const onBoardingImages = {
   image1: require('../assets/images/Onboarding/image-1.png'),
   image2: require('../assets/images/Onboarding/image-2.png'),
   image3: require('../assets/images/Onboarding/image-3.png'),
@@ -102,9 +102,7 @@ export const topLocations = [
     name: 'New York City',
     description: 'The city that never sleeps',
     imageUrl: [
-      'https://images.unsplash.com/photo-1549877452-9c387954fbc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
-      'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
-      'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+      'https://images.unsplash.com/photo-1595330449916-e7c3e1962bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50JTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
     ],
     estates: [
       {
@@ -115,7 +113,7 @@ export const topLocations = [
         rating: 4.8,
         type: 'Apartment',
         imageUrl:
-          'https://images.unsplash.com/photo-1549877452-9c387954fbc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+          'https://plus.unsplash.com/premium_photo-1672252617589-35d9a810c2d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXBhcnRtZW50JTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
       },
       {
         id: 2,
@@ -125,7 +123,7 @@ export const topLocations = [
         rating: 4.5,
         type: 'Villa',
         imageUrl:
-          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1568369366985-373beced16ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -147,7 +145,7 @@ export const topLocations = [
         rating: 4.9,
         type: 'Apartment',
         imageUrl:
-          'https://images.unsplash.com/photo-1549877452-9c387954fbc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGxhY2VzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1585129777188-94600bc7b4b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60https://images.unsplash.com/photo-1585129777188-94600bc7b4b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
       {
         id: 4,
@@ -157,7 +155,7 @@ export const topLocations = [
         rating: 4.2,
         type: 'House',
         imageUrl:
-          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1568369366899-03207f4b1c0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -179,7 +177,7 @@ export const topLocations = [
         rating: 4.7,
         type: 'Villa',
         imageUrl:
-          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1551038247-3d9af20df552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
       {
         id: 6,
@@ -189,7 +187,7 @@ export const topLocations = [
         rating: 4.6,
         type: 'Apartment',
         imageUrl:
-          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1577413237620-973f8c2299b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -211,7 +209,7 @@ export const topLocations = [
         rating: 4.8,
         type: 'Villa',
         imageUrl:
-          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1606074280798-2dabb75ce10c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXBhcnRtZW50JTIwaW50ZXJpb3J8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
       },
       {
         id: 8,
@@ -221,7 +219,7 @@ export const topLocations = [
         rating: 4.5,
         type: 'Apartment',
         imageUrl:
-          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1596113199003-03babc2bdd2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFwYXJ0bWVudCUyMGludGVyaW9yfGVufDB8MXwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -243,7 +241,7 @@ export const topLocations = [
         rating: 4.9,
         type: 'House',
         imageUrl:
-          'https://images.unsplash.com/photo-1593604572577-1c6c44fa246c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBsYWNlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1516003276715-4702ae06c970?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGx1eGFyeSUyMGFwYXJ0bWVudHxlbnwwfDF8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
       },
       {
         id: 10,
@@ -253,7 +251,7 @@ export const topLocations = [
         rating: 4.2,
         type: 'Apartment',
         imageUrl:
-          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGxhY2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+          'https://images.unsplash.com/photo-1531835551805-16d864c8d311?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGFwYXJ0bWVudCUyMGludGVyaW9yfGVufDB8MXwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
       },
     ],
   },
@@ -342,6 +340,13 @@ export const userData = {
   imageUrl: userIMage,
 };
 
+export const detailsImage = {
+  imageOne:
+    'https://images.unsplash.com/photo-1565953522043-baea26b83b7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXBhcnRtZW50JTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+  imageTwo:
+    'https://images.unsplash.com/photo-1565363887715-8884629e09ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudCUyMGJ1aWxkaW5nfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+};
+
 export default {
   welcomeImage,
   onBoarding,
@@ -356,4 +361,5 @@ export default {
   userData,
   errIcon,
   vrIcon,
+  detailsImage,
 };
