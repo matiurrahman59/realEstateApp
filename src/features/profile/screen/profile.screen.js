@@ -11,11 +11,9 @@ import UserProfile from '../components/userprofile-component';
 
 const ProfileScreen = ({ navigation }) => {
   const [selectedTab, setSelectedTab] = useState(0);
-
-  const featuredEstateList = useMemo(
-    () => topLocations.flatMap((item) => item.estates),
-    [topLocations]
-  );
+  const [featuredEstateList, setFeaturedEstateList] = useState(function () {
+    return topLocations.flatMap((item) => item.estates);
+  });
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -68,7 +66,8 @@ const ProfileScreen = ({ navigation }) => {
               leftTitle={`${featuredEstateList?.length} transactions`}
               style='font-medium'
             />
-            <View className='flex-row justify-around flex-wrap'>
+            {/* <View className='flex-row justify-around flex-wrap'> */}
+            <View className='flex-row justify-between flex-wrap'>
               {featuredEstateList?.map((item) => (
                 <CardInfo item={item} key={item.id} />
               ))}

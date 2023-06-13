@@ -6,7 +6,7 @@ const DefaultText = ({ children, className, ...rest }) => {
   const mergedStyles = `${defaultStyles} ${className}`;
 
   return (
-    <Text className={mergedStyles} {...rest}>
+    <Text className={mergedStyles} {...rest} numberOfLines={1}>
       {children}
     </Text>
   );

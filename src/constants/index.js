@@ -12,6 +12,9 @@ export const DEVICE = {
 export const BrandLogo = require('../assets/images/logo.png');
 export const welcomeImage = require('../assets/images/Onboarding/welcome-image.png');
 export const userIMage = require('../assets/images/user-2.png');
+export const userIMageTwo = require('../assets/images/user-3.png');
+export const userIMageThree = require('../assets/images/user-4.png');
+export const userIMageFour = require('../assets/images/user-5.png');
 export const errIcon = require('../assets/images/errIcon.png');
 export const vrIcon = require('../assets/images/vrIcon.png');
 
@@ -92,6 +95,25 @@ export const categoryList = [
   },
   {
     id: 6,
+    title: 'House',
+  },
+];
+
+export const reviewCategoryList = [
+  {
+    id: 1,
+    title: 'All',
+  },
+  {
+    id: 2,
+    title: 'Review',
+  },
+  {
+    id: 3,
+    title: 'Sold',
+  },
+  {
+    id: 4,
     title: 'House',
   },
 ];
@@ -313,6 +335,28 @@ export const topAgents = [
     sold: 65,
     rank: 2,
   },
+  {
+    id: 6,
+    name: 'Jane Smith',
+    email: 'jane.smith@example.com',
+    imageUrl:
+      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+    rating: 4.5,
+    review: 80,
+    sold: 65,
+    rank: 2,
+  },
+  {
+    id: 7,
+    name: 'Jane Smith',
+    email: 'jane.smith@example.com',
+    imageUrl:
+      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
+    rating: 4.5,
+    review: 80,
+    sold: 65,
+    rank: 2,
+  },
 ];
 
 export const activityDetails = [
@@ -362,4 +406,8 @@ export default {
   errIcon,
   vrIcon,
   detailsImage,
+  reviewCategoryList,
+  userIMageTwo,
+  userIMageThree,
+  userIMageFour,
 };

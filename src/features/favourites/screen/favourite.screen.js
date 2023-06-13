@@ -1,7 +1,9 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import React, { useLayoutEffect, useMemo, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
 import { Avatar } from 'react-native-paper';
+import { SwipeListView } from 'react-native-swipe-list-view';
 
 import CardInfo from '../../../components/cardinfo-component';
 import DefaultText from '../../../components/defaulttext-componet';
@@ -10,15 +12,18 @@ import { topLocations } from '../../../constants';
 
 const FavouriteScreen = ({ navigation }) => {
   const [selectedTab, setSelectedTab] = useState('vertical');
+  const [listData, setListData] = useState(function () {
+    return topLocations.flatMap((item) => item.estates);
+  });
 
   const handleTabPress = (index) => {
     setSelectedTab(index);
   };
 
-  const featuredEstateList = useMemo(
-    () => topLocations.flatMap((item) => item.estates),
-    [topLocations]
-  );
+  const deleteHandler = (item) => {
+    const updatedList = listData.filter((dataItem) => dataItem.id !== item.id);
+    setListData(updatedList);
+  };
 
   //  Setting header style
   useLayoutEffect(() => {
@@ -36,11 +41,54 @@ const FavouriteScreen = ({ navigation }) => {
     });
   }, [navigation]);
 
+  const RightSwipe = ({ item }) => {
+    return (
+      <TouchableOpacity
+        className='mb-[10px]'
+        onPress={() => deleteHandler(item)}
+      >
+        <View
+          style={{
+            height: '100%',
+          }}
+          className='bg-secondary justify-center items-end rounded-3xl'
+        >
+          <Avatar.Icon
+            icon='trash-can-outline'
+            size={40}
+            className='bg-transparent'
+          />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const renderHiddenItem = ({ item }) => (
+    <TouchableOpacity className='mb-[10px]' onPress={() => deleteHandler(item)}>
+      <View
+        style={{
+          height: '100%',
+        }}
+        className='bg-secondary justify-center items-end rounded-3xl'
+      >
+        <Avatar.Icon
+          icon='trash-can-outline'
+          size={40}
+          className='bg-transparent mr-4'
+        />
+      </View>
+    </TouchableOpacity>
+  );
+
+  const renderListItem = ({ item }) => {
+    return <HorizontalCardInfo item={item} style='mr-0 mb-[10px]' />;
+  };
+
   return (
     <ScrollView className=' flex-1 bg-white pt-5'>
-      <View className='px-6 flex-row justify-between items-center mb-5'>
+      <View className='px-6 flex-row justify-between items-center'>
         <DefaultText className='font-medium font-lato leading-[22px] text-lg'>
-          {`${featuredEstateList.length} estates`}
+          {`${listData.length} estates`}
         </DefaultText>
         <View className='flex-row items-center justify-between bg-gray--3 rounded-full p-2'>
           <TouchableOpacity
@@ -76,18 +124,30 @@ const FavouriteScreen = ({ navigation }) => {
       </View>
 
       {selectedTab === 'vertical' ? (
-        <View className='px-6 flex-row justify-between flex-wrap'>
-          {featuredEstateList?.map((item) => (
+        <View className='px-6 py-5 pb-10 flex-row justify-between flex-wrap'>
+          {listData?.map((item) => (
             <CardInfo item={item} key={item.id} />
           ))}
         </View>
       ) : (
-        <View className='px-6 pb-5 items-center'>
-          {featuredEstateList?.map((item) => (
-            <View key={item.id} className='mb-3'>
-              <HorizontalCardInfo item={item} style='w-full' />
+        <View className='pt-4 pb-12 space-y-3'>
+          {listData?.map((item) => (
+            <View key={item.id} className='mx-6'>
+              <HorizontalCardInfo item={item} />
             </View>
           ))}
+          {/* <Swipeable renderRightActions={RightSwipe}> */}
+          {/* </Swipeable> */}
+
+          {/* <View className='mx-6'>
+            <SwipeListView
+              data={listData}
+              renderItem={renderListItem}
+              renderHiddenItem={renderHiddenItem}
+              rightOpenValue={-75}
+              disableRightSwipe={true}
+            />
+          </View> */}
         </View>
       )}
     </ScrollView>

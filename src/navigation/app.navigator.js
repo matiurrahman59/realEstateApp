@@ -9,7 +9,9 @@ import ProfileScreen from '../features/profile/screen/profile.screen';
 import SettingScreen from '../features/profile/screen/setting.screen';
 import EstateDetailsScreen from '../features/realestate/screen/details.screen';
 import FeatureListScreen from '../features/realestate/screen/featurelist.screen';
+import NotificationScreen from '../features/realestate/screen/notification.screen';
 import RealEstateScreen from '../features/realestate/screen/realestate.screen';
+import TopAgentScreen from '../features/realestate/screen/topagent.screen';
 import TopLocationScreen from '../features/realestate/screen/toplocation.screen';
 import SearchScreen from '../features/search/screen/search.screen';
 
@@ -136,6 +138,20 @@ const AppNavigator = () => {
           headerShown: false,
         }}
         component={EstateDetailsScreen}
+      />
+      <Stack.Screen
+        name='Notification'
+        options={{
+          headerTitle: '',
+        }}
+        component={NotificationScreen}
+      />
+      <Stack.Screen
+        name='TopAgent'
+        options={{
+          headerTitle: '',
+        }}
+        component={TopAgentScreen}
       />
     </Stack.Navigator>
   );

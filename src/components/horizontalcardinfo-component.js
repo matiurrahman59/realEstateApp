@@ -1,7 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+
 import { Avatar } from 'react-native-paper';
 import DefaultText from './defaulttext-componet';
 
@@ -12,7 +13,7 @@ const HorizontalCardInfo = ({ item, style }) => {
     <TouchableOpacity
       onPress={() => navigation.navigate('EstateDetails', item)}
       className={`p-2 rounded-3xl h-[156px]  ${
-        style ? style : 'w-[320px] mr-[10px]'
+        style ? style : 'mr-[10px]'
       } bg-gray--3 flex-row items-center space-x-3`}
     >
       <View className='relative'>

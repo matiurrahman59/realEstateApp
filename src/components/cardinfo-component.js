@@ -15,10 +15,13 @@ const CardInfo = ({ item }) => {
       className='p-2 rounded-3xl space-y-3 max-w-[200px] bg-gray--3 mb-3'
     >
       <View className='relative '>
+        {/* Image */}
         <Image
           source={{ uri: item.imageUrl }}
           className='h-[180px] w-[150px] rounded-3xl opacity-95'
         />
+
+        {/* Price */}
         <View className='absolute bottom-2 right-3 bg-secondary py-2 px-3 rounded-lg'>
           <View className='flex-row items-end'>
             <DefaultText className='text-xs text-white font-montserrat font-semibold leading-4 '>
@@ -29,6 +32,8 @@ const CardInfo = ({ item }) => {
             </DefaultText>
           </View>
         </View>
+
+        {/* Favourite button */}
         <TouchableOpacity className='absolute top-2 right-2'>
           <Avatar.Icon
             size={30}
@@ -41,9 +46,12 @@ const CardInfo = ({ item }) => {
         </TouchableOpacity>
       </View>
 
+      {/* item name */}
       <DefaultText className='text-xs  max-w-[130px] font-bold'>
         {item.name}
       </DefaultText>
+
+      {/* rating */}
       <View className='flex-row items-start space-x-2'>
         <View className='flex-row items-center space-x-1'>
           <Ionicons name='star' size={9} color='#FFC42D' />
@@ -51,6 +59,8 @@ const CardInfo = ({ item }) => {
             {item.rating}
           </DefaultText>
         </View>
+
+        {/* Address */}
         <View>
           <View className='flex-row items-start gap-1'>
             <Ionicons name='location' size={9} color='#252B5C' />

@@ -1,8 +1,14 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useColorScheme } from 'nativewind';
-import React, { useMemo, useState } from 'react';
-import { SafeAreaView, ScrollView, TextInput, View } from 'react-native';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from '@gorhom/bottom-sheet';
+import { StatusBar } from 'expo-status-bar';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native';
 import { Avatar, Badge } from 'react-native-paper';
+
+import BottomModal from '../../../components/bottommodal-component';
 
 import DefaultText from '../../../components/defaulttext-componet';
 import SectionHeader from '../../../components/seactionheader-component';
@@ -12,6 +18,7 @@ import {
   topAgents,
   topLocations,
 } from '../../../constants';
+import BottomSheetContent from '../components/bottomsheetcontent';
 import CategoryList from '../components/categorylist-component';
 import FeaturedEstates from '../components/featureditem-component';
 import Location from '../components/location-component';
@@ -23,19 +30,41 @@ const userIMage = require('../../../assets/images/user-1.png');
 
 const RealEstateScreen = ({ navigation }) => {
   const [text, setText] = useState('');
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const [overlay, setOverlay] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const featuredEstateList = useMemo(
     () => topLocations.flatMap((item) => item.estates),
     [topLocations]
   );
 
+  // ref
+  const bottomSheetModalRef = useRef(null);
+  // callbacks
+  const handlePresentModalPress = useCallback(() => {
+    bottomSheetModalRef.current?.present();
+  }, []);
+
   return (
-    <SafeAreaView className='flex-1'>
+    <BottomSheetModalProvider>
       <ScrollView className='flex-1 bg-white relative'>
+        <StatusBar style='auto' />
+
+        {/* Blur overlay */}
+        {overlay && (
+          <View className='absolute h-full w-full bg-secondary/95 z-50' />
+        )}
+
+        {/* Bottom sheet modal */}
+        <BottomModal
+          bottomSheetModalRef={bottomSheetModalRef}
+          content={<BottomSheetContent />}
+        />
+
         {/* Circle image */}
         <View className='absolute h-96 w-96 rounded-full bg-secondary/20 -top-28 -left-28 z-10' />
 
+        {/* Main content */}
         <View
           className='z-20'
           style={{
@@ -47,9 +76,14 @@ const RealEstateScreen = ({ navigation }) => {
             {/* Top header */}
             <View className='h-[50px]'>
               <View className='flex-row items-center justify-between'>
-                <Location />
+                {/* User location */}
+                <Location onPress={handlePresentModalPress} />
                 <View className='flex-row space-x-2'>
-                  <View className='w-[50px] h-[50px] flex items-center justify-center rounded-full border-primary border-2 bg-white'>
+                  {/* Notification icon */}
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Notification')}
+                    className='w-[50px] h-[50px] flex items-center justify-center rounded-full border-primary border-2 bg-white'
+                  >
                     <View className='relative'>
                       <Ionicons
                         name='notifications-outline'
@@ -60,10 +94,12 @@ const RealEstateScreen = ({ navigation }) => {
                         <Badge size={6} />
                       </View>
                     </View>
-                  </View>
-                  <View className='w-[50px] border-gray--1 border-2 rounded-full flex items-center justify-center'>
+                  </TouchableOpacity>
+
+                  {/* User photo */}
+                  <TouchableOpacity className='w-[50px] border-gray--1 border-2 rounded-full flex items-center justify-center'>
                     <Avatar.Image size={44} source={userIMage} />
-                  </View>
+                  </TouchableOpacity>
                 </View>
               </View>
             </View>
@@ -129,19 +165,20 @@ const RealEstateScreen = ({ navigation }) => {
               <SectionHeader
                 leftTitle='Top Estate Agent'
                 rightTitle='explore'
+                onPress={() => navigation.navigate('TopAgent')}
               />
               <TopAgents topAgents={topAgents} />
             </View>
 
             {/* Nearby estates */}
             <View>
-              <SectionHeader leftTitle='Explore Nearby Estates' />
+              <SectionHeader leftTitle='Explore Nearby' />
               <NearbyEstates featuredList={featuredEstateList} />
             </View>
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </BottomSheetModalProvider>
   );
 };
 
