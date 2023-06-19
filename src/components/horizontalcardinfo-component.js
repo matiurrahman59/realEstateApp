@@ -12,9 +12,9 @@ const HorizontalCardInfo = ({ item, style }) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('EstateDetails', item)}
-      className={`p-2 rounded-3xl h-[156px]  ${
-        style ? style : 'mr-[10px]'
-      } bg-gray--3 flex-row items-center space-x-3`}
+      className={`p-2 rounded-3xl h-[156px] bg-gray--3 flex-row items-center space-x-3 ${
+        style ? style : 'mr-3'
+      }`}
     >
       <View className='relative'>
         <Image

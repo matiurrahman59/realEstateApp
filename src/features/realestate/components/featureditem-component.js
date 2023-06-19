@@ -7,6 +7,7 @@ const FeaturedEstates = ({ featuredList }) => {
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{ paddingLeft: 20, paddingRight: 8 }}
       data={featuredList}
       renderItem={({ item }) => {
         return <HorizontalCardInfo item={item} key={item.id} />;

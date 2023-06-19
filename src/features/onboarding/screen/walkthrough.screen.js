@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { FlatList, Image, SafeAreaView, View } from 'react-native';
 
-import onBoardingData from '../../../assets/dummyData/onBoradingData.json';
 import TouchableButton from '../../../components/button-component';
-import { BrandLogo, DEVICE } from '../../../constants';
+import { BrandLogo, DEVICE, onBoardingData } from '../../../constants';
 import OnboardingSlide from '../components/onboardingSlide-component';
 import Pagination from '../components/pagination-component';
 
@@ -33,8 +32,8 @@ const WalkthroughScreen = ({ navigation }) => {
     setCurrentSlideIndex(lastSlideIndex);
   };
 
-  const navigateToMainScreen = () => {
-    navigation.navigate('Home');
+  const navigateToAuthScreen = () => {
+    navigation.navigate('AuthLogin');
   };
 
   return (
@@ -69,7 +68,7 @@ const WalkthroughScreen = ({ navigation }) => {
         <View className='flex-row items-center mt-3'>
           <TouchableButton
             onPress={
-              currentSlideIndex === 2 ? navigateToMainScreen : goToNextSlide
+              currentSlideIndex === 2 ? navigateToAuthScreen : goToNextSlide
             }
             contentContainerStyle='w-[190px] h-[50px] ml-4 rounded-md bg-primary'
             label={currentSlideIndex === 2 ? 'Get Started' : 'Next'}

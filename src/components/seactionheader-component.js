@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import DefaultText from './defaulttext-componet';
 
@@ -9,6 +9,7 @@ const SectionHeader = ({
   onPress,
   containerStyle,
 }) => {
+  const [isPressed, setIsPressed] = useState(false);
   const defaultStyles = 'font-bold text-[18px] font-lato leading-[22px]';
   const mergedStyles = `${defaultStyles} ${style}`;
 
@@ -18,7 +19,14 @@ const SectionHeader = ({
     >
       <DefaultText className={mergedStyles}>{leftTitle}</DefaultText>
       {rightTitle && (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity
+          className={`border border-transparent  py-2 px-4 rounded-3xl ${
+            isPressed && 'border-primary'
+          }`}
+          onPress={onPress}
+          onPressIn={() => setIsPressed(true)}
+          onPressOut={() => setIsPressed(false)}
+        >
           <DefaultText className='font-semibold text-xs text-secondary'>
             {rightTitle}
           </DefaultText>

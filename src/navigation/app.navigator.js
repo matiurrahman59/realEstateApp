@@ -4,9 +4,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { View } from 'react-native';
 
+import BackButton from '../components/backbutton-component';
 import FavouriteScreen from '../features/favourites/screen/favourite.screen';
 import ProfileScreen from '../features/profile/screen/profile.screen';
 import SettingScreen from '../features/profile/screen/setting.screen';
+import AgentProfile from '../features/realestate/screen/agentprofile.screen';
 import EstateDetailsScreen from '../features/realestate/screen/details.screen';
 import FeatureListScreen from '../features/realestate/screen/featurelist.screen';
 import NotificationScreen from '../features/realestate/screen/notification.screen';
@@ -27,6 +29,9 @@ const tabBarOptions = {
 
 const createTabbedScreenOptions = ({ route }) => {
   return {
+    headerStyle: {
+      elevation: 0,
+    },
     headerTitleAlign: 'center',
     headerTitleStyle: {
       color: '#252B5C',
@@ -102,7 +107,14 @@ const HomeTabs = () => {
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          elevation: 0,
+        },
+        headerLeft: () => <BackButton />,
+      }}
+    >
       <Stack.Screen
         name='MainScreen'
         options={{
@@ -152,6 +164,14 @@ const AppNavigator = () => {
           headerTitle: '',
         }}
         component={TopAgentScreen}
+      />
+      <Stack.Screen
+        name='AgentProfile'
+        options={{
+          headerTitle: 'Profile',
+          headerTitleAlign: 'center',
+        }}
+        component={AgentProfile}
       />
     </Stack.Navigator>
   );

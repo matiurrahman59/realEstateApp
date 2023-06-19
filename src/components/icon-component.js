@@ -3,18 +3,12 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Avatar } from 'react-native-paper';
 
-const Icon = ({
-  onPress,
-  style,
-  className,
-  boxSize,
-  size,
-  color,
-  bgColor,
-  iconName,
-}) => {
+const Icon = ({ onPress, style, boxSize, size, color, bgColor, iconName }) => {
   return (
-    <TouchableOpacity onPress={onPress} style={style} className={className}>
+    <TouchableOpacity
+      onPress={onPress}
+      className={`h-[50px] w-[50px] items-center justify-center rounded-full ${style}`}
+    >
       <Avatar.Icon
         size={boxSize}
         style={{

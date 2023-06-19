@@ -8,12 +8,15 @@ const TopAgents = ({ topAgents }) => {
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{ paddingLeft: 20, paddingRight: 8 }}
       data={topAgents}
       renderItem={({ item }) => {
         return (
-          <TouchableOpacity className='mr-[10px]'>
-            <View className='bg-gray--3 p-1 rounded-full'>
-              <Avatar.Image size={70} source={{ uri: item.imageUrl }} />
+          <TouchableOpacity className='mr-3 '>
+            <View className='justify-center items-center'>
+              <View className='border-4 border-gray--3 rounded-full'>
+                <Avatar.Image size={70} source={{ uri: item.imageUrl }} />
+              </View>
             </View>
             <DefaultText className='font-medium text-center text-xs mt-2'>
               {item.name}

@@ -6,6 +6,7 @@ import { Searchbar } from 'react-native-paper';
 import CardInfo from '../../../components/cardinfo-component';
 import DefaultText from '../../../components/defaulttext-componet';
 import HorizontalCardInfo from '../../../components/horizontalcardinfo-component';
+import Icon from '../../../components/icon-component';
 import { errIcon, topLocations } from '../../../constants';
 
 const SearchScreen = ({ navigation }) => {
@@ -28,18 +29,21 @@ const SearchScreen = ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
-          onPress={() => console.log('filter search')}
-          className='mr-4 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'
-        >
-          <FontAwesome name='sliders' size={24} color='#252B5C' />
-        </TouchableOpacity>
+        <Icon
+          iconName='menu-outline'
+          bgColor='#DFDFDF'
+          color='#252B5C'
+          boxSize={50}
+          size={20}
+          style='mr-5'
+          onPress={() => console.log('search screen')}
+        />
       ),
     });
   }, [navigation]);
 
   return (
-    <View className='flex-1 bg-white px-6 pt-5'>
+    <View className='flex-1 bg-white px-5 pt-5'>
       <Searchbar
         placeholder='Search'
         onChangeText={onChangeSearch}
@@ -123,7 +127,10 @@ const SearchScreen = ({ navigation }) => {
                 not found
               </DefaultText>
             </View>
-            <DefaultText className='max-w-[297px] text-xs text-bodyText'>
+            <DefaultText
+              line={true}
+              className='max-w-[297px] text-xs text-bodyText'
+            >
               Sorry, we can't find the real estates you are looking for. Maybe,
               a little spelling mistake?
             </DefaultText>

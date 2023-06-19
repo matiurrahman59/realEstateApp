@@ -6,7 +6,7 @@ import DefaultText from '../../../components/defaulttext-componet';
 const FeatureList = ({ quantity, title, icon, containerStyle, labelStyle }) => {
   return (
     <TouchableOpacity
-      className={`py-[15px] px-6 rounded-full mr-[10px] ${
+      className={`py-[15px] px-6 rounded-full mr-3 ${
         containerStyle ? containerStyle : 'bg-gray--3'
       }`}
     >

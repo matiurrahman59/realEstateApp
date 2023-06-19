@@ -24,40 +24,43 @@ export const onBoardingImages = {
   image3: require('../assets/images/Onboarding/image-3.png'),
 };
 
-const logInImages = {
+export const logInImages = {
   image1: require('../assets/images/Login/image-1.png'),
   image2: require('../assets/images/Login/image-2.png'),
   image3: require('../assets/images/Login/image-3.png'),
   image4: require('../assets/images/Login/image-4.png'),
 };
 
-const socialIcons = {
+export const socialIcons = {
   fb: require('../assets/images/Login/Facebook.png'),
   google: require('../assets/images/Login/Google.png'),
 };
 
-const onBoarding = [
-  {
-    id: 0,
-    title: 'Find best place to stay in $good price$',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
-    image: onBoardingImages.image1,
-  },
+export const onBoardingData = [
   {
     id: 1,
-    title: 'Fast sell your property in just $one click$',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
-    image: onBoardingImages.image2,
+    title: 'Find best place to stay in good price',
+    subText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
+    imageUri:
+      'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHJlYWwlMjBlc3RhdGV8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
   },
   {
     id: 2,
-    title: 'Find $perfect choice$ for your future house ',
-    subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
-    image: onBoardingImages.image3,
+    title: 'Fast sell your property in just one click ',
+    subText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
+    imageUri:
+      'https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHJlYWwlMjBlc3RhdGV8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  },
+  {
+    id: 3,
+    title: 'Find perfect choice for your future house ',
+    subText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed.',
+    imageUri:
+      'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fHJlYWwlMjBlc3RhdGV8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
   },
 ];
 
-const logIn = [
+const logInScreenImage = [
   {
     id: 0,
     url: logInImages.image1,
@@ -282,8 +285,8 @@ export const topLocations = [
 export const topAgents = [
   {
     id: 1,
-    name: 'John Doe',
-    email: 'john.doe@example.com',
+    name: 'Sarah Thompson',
+    email: 'sarahthompson@example.com',
     imageUrl:
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
     rating: 4.8,
@@ -326,8 +329,8 @@ export const topAgents = [
   },
   {
     id: 5,
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
+    name: 'Robert Johnson',
+    email: 'robertjohnson@example.com',
     imageUrl:
       'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
     rating: 4.5,
@@ -337,23 +340,23 @@ export const topAgents = [
   },
   {
     id: 6,
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
+    name: 'Michael Wilson',
+    email: 'michaelwilson@example.com',
     imageUrl:
-      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
-    rating: 4.5,
+      'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    rating: 3.5,
     review: 80,
     sold: 65,
     rank: 2,
   },
   {
     id: 7,
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
+    name: 'David Brown',
+    email: 'davidbrown@example.com',
     imageUrl:
-      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVzZXIlMjBwcm9maWxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60',
-    rating: 4.5,
-    review: 80,
+      'https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHVzZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+    rating: 4.1,
+    review: 90,
     sold: 65,
     rank: 2,
   },
@@ -379,7 +382,7 @@ export const activityDetails = [
 
 export const userData = {
   name: 'Mathew Adam',
-  mail: 'mathew@email.com',
+  email: 'mathew@email.com',
   phone: '+62 112-3288-9111',
   imageUrl: userIMage,
 };
@@ -393,8 +396,9 @@ export const detailsImage = {
 
 export default {
   welcomeImage,
-  onBoarding,
-  logIn,
+  onBoardingData,
+  logInImages,
+  logInScreenImage,
   socialIcons,
   BrandLogo,
   DEVICE,

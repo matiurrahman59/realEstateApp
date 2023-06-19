@@ -1,7 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
+import BackButton from '../../../components/backbutton-component';
 import TouchableButton from '../../../components/button-component';
 import DefaultText from '../../../components/defaulttext-componet';
 
@@ -13,7 +14,7 @@ const SettingScreen = ({ navigation, route }) => {
   const { name, mail, imageUrl, phone } = route.params;
 
   return (
-    <View className='flex-1 bg-white px-6 relative'>
+    <View className='flex-1 bg-white px-5 relative'>
       <View className='absolute bottom-3 left-0 right-0 items-center'>
         <TouchableButton
           label='Choose location'

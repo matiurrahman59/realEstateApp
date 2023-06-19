@@ -8,10 +8,11 @@ const TopLocations = ({ topLocations }) => {
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{ paddingLeft: 20, paddingRight: 8 }}
       data={topLocations}
       renderItem={({ item }) => {
         return (
-          <TouchableOpacity className='p-2 pr-4 rounded-full bg-gray--3 mr-[10px] flex-row items-center space-x-2'>
+          <TouchableOpacity className='p-2 pr-4 rounded-full bg-gray--3 mr-3 flex-row items-center space-x-2'>
             <Avatar.Image size={40} source={{ uri: item.imageUrl[0] }} />
             <DefaultText className='font-medium text-xs text-defaultColor'>
               {item.name}

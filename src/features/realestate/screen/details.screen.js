@@ -1,10 +1,11 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
 
+import BackButton from '../../../components/backbutton-component';
 import TouchableButton from '../../../components/button-component';
 import DefaultText from '../../../components/defaulttext-componet';
 import Icon from '../../../components/icon-component';
@@ -21,9 +22,9 @@ const EstateDetailsScreen = ({ navigation, route }) => {
     setSelectedImage(item.imageUrl);
   }, [item]);
 
-  const setNewImage = (imageUrl) => {
+  const setNewImage = useCallback((imageUrl) => {
     setSelectedImage(imageUrl);
-  };
+  });
 
   const onScroll = (event) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
@@ -35,14 +36,6 @@ const EstateDetailsScreen = ({ navigation, route }) => {
     }
   };
 
-  // const handleScrollBeginDrag = () => {
-  //   setIsButtonVisible(false);
-  // };
-
-  // const handleScrollEndDrag = () => {
-  //   setIsButtonVisible(true);
-  // };
-
   return (
     <View className='flex-1 bg-white relative'>
       <StatusBar style='inverted' />
@@ -52,19 +45,14 @@ const EstateDetailsScreen = ({ navigation, route }) => {
         <View className='w-full bg-white py-5 items-center absolute z-50 bottom-0'>
           <TouchableButton
             label='Buy Now'
-            contentContainerStyle='bg-primary w-[90vw]'
-            labelStyle='font-lato font-bold tracking-wide text-white text-base  py-6'
+            contentContainerStyle='bg-primary w-[75vw]'
+            labelStyle='font-lato font-bold tracking-wide text-white text-base py-5'
           />
         </View>
       )}
 
-      <ScrollView
-        className='bg-white flex-1'
-        // onScrollBeginDrag={handleScrollBeginDrag}
-        // onScrollEndDrag={handleScrollEndDrag}
-        onScroll={onScroll}
-      >
-        <View className='w-full h-[60vh] px-3 relative'>
+      <ScrollView className='bg-white flex-1' onScroll={onScroll}>
+        <View className='w-full h-[60vh] relative'>
           {/* Image */}
           <Image
             source={{ uri: selectedImage }}
@@ -72,25 +60,29 @@ const EstateDetailsScreen = ({ navigation, route }) => {
           />
 
           {/* Left icon */}
-          <Icon
-            iconName='chevron-back'
-            bgColor='#DFDFDF'
-            color='#252B5C'
-            boxSize={50}
-            size={20}
-            onPress={() => navigation.goBack()}
+          <View
             style={{
               top: statusBar,
             }}
-            className='absolute left-6'
-          />
+            className='absolute left-5'
+          >
+            <Icon
+              iconName='chevron-back'
+              bgColor='#DFDFDF'
+              color='#252B5C'
+              boxSize={50}
+              size={20}
+              onPress={() => navigation.goBack()}
+              className='absolute left-6'
+            />
+          </View>
 
           {/* right side icons */}
           <View
             style={{
               top: statusBar,
             }}
-            className='absolute right-6 flex-row items-center space-x-4'
+            className='absolute right-5 flex-row space-x-4'
           >
             <Icon
               iconName='cloud-upload-outline'
@@ -98,6 +90,7 @@ const EstateDetailsScreen = ({ navigation, route }) => {
               color='#252B5C'
               boxSize={50}
               size={20}
+              style='mr-0'
             />
             <View>
               <Icon
@@ -106,12 +99,13 @@ const EstateDetailsScreen = ({ navigation, route }) => {
                 color='white'
                 boxSize={50}
                 size={20}
+                style='mr-0'
               />
             </View>
           </View>
 
           {/* bottom left absolute items*/}
-          <View className='absolute bottom-3 left-6 space-x-[2px] flex-row'>
+          <View className='absolute bottom-3 left-5 space-x-[2px] flex-row'>
             <View className='py-[15px] px-6 rounded-full mr-[10px] bg-secondary'>
               <View className='flex-row items-center space-x-1'>
                 <Ionicons name='star' size={15} color='#FFC42D' />
@@ -129,7 +123,7 @@ const EstateDetailsScreen = ({ navigation, route }) => {
           </View>
 
           {/* Bottom right absolute items */}
-          <View className='absolute bottom-2 right-6 space-y-2'>
+          <View className='absolute bottom-2 right-5 space-y-2'>
             <TouchableOpacity
               onPress={() => setNewImage(detailsImage.imageOne)}
               className='bg-white p-[2px] h-[60px] w-[60px] rounded-[18px]'
@@ -231,8 +225,12 @@ const EstateDetailsScreen = ({ navigation, route }) => {
         </View>
 
         {/* Feature list */}
-        <View className='pl-6 pb-8'>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View className='pb-8'>
+          <ScrollView
+            horizontal
+            contentContainerStyle={{ paddingLeft: 20, paddingRight: 8 }}
+            showsHorizontalScrollIndicator={false}
+          >
             <FeatureList quantity={2} title='Bedroom' icon='bed-empty' />
             <FeatureList quantity={1} title='Bathroom' icon='shower' />
             <FeatureList quantity='1200 sqft' icon='signal-distance-variant' />
@@ -243,12 +241,18 @@ const EstateDetailsScreen = ({ navigation, route }) => {
         <View className='px-6'>
           {/* Location & facilities */}
           <View>
-            <SectionHeader leftTitle='Location & Public Facilities' />
+            <SectionHeader
+              containerStyle='mb-0'
+              leftTitle='Location & Public Facilities'
+            />
             <View className='flex-row items-center space-x-4 pt-5 pb-4'>
               <View className='bg-gray--3 p-[15px] rounded-full'>
                 <Ionicons name='location-outline' size={20} color='#53587A' />
               </View>
-              <DefaultText className='text-xs w-[90%] leading-[13px] text-[#53587A] tracking-normal font-normal'>
+              <DefaultText
+                line={true}
+                className='text-xs w-[90%] leading-[13px] text-[#53587A] tracking-normal font-normal'
+              >
                 St. Cikoko Timur, Kec. Pancoran, Jakarta Selatan, Indonesia
                 12770
               </DefaultText>
@@ -281,8 +285,12 @@ const EstateDetailsScreen = ({ navigation, route }) => {
         </View>
 
         {/* other facilities */}
-        <View className='pl-6 py-5'>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View className='py-5'>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingLeft: 20, paddingRight: 8 }}
+          >
             <FeatureList quantity={2} title='Hospital' />
             <FeatureList quantity={4} title='Gas stations' />
             <FeatureList quantity='2' title='Schools' />

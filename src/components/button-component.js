@@ -18,7 +18,7 @@ const TouchableButton = ({
     >
       <View className='items-center justify-center flex-row'>
         {appendComponent}
-        <Text className={`text-white text-base  ${labelStyle}`}>{label}</Text>
+        <Text className={`text-white text-base ${labelStyle}`}>{label}</Text>
         {prependComponent}
       </View>
     </TouchableOpacity>

@@ -1,13 +1,16 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import React, { useLayoutEffect, useMemo, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import React, { useLayoutEffect, useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 
+import { Avatar } from 'react-native-paper';
 import CardInfo from '../../../components/cardinfo-component';
 import DefaultText from '../../../components/defaulttext-componet';
+import Icon from '../../../components/icon-component';
+import ScrollViewWrapper from '../../../components/scrollview-component';
 import SectionHeader from '../../../components/seactionheader-component';
+import UserProfile from '../../../components/userprofile-component';
 import { activityDetails, topLocations, userData } from '../../../constants';
 import CustomTab from '../components/customtab-component';
-import UserProfile from '../components/userprofile-component';
 
 const ProfileScreen = ({ navigation }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -18,12 +21,15 @@ const ProfileScreen = ({ navigation }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
+        <Icon
+          iconName='settings-outline'
+          bgColor='#DFDFDF'
+          color='#252B5C'
+          boxSize={50}
+          size={20}
+          style='mr-5'
           onPress={() => navigation.navigate('Setting', userData)}
-          className='mr-4 bg-gray--3 h-[50px] w-[50px] items-center justify-center rounded-full'
-        >
-          <Ionicons name='settings-outline' size={24} color='#252B5C' />
-        </TouchableOpacity>
+        />
       ),
     });
   }, [navigation]);
@@ -33,9 +39,9 @@ const ProfileScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView className='flex-1 bg-white px-6'>
+    <ScrollViewWrapper>
       {/* User profile */}
-      <UserProfile user={userData} />
+      <UserProfile user={userData} badge={true} />
 
       {/* User activity details */}
       <View className='flex-row items-center justify-between pt-5'>
@@ -85,7 +91,7 @@ const ProfileScreen = ({ navigation }) => {
           </Text>
         )}
       </View>
-    </ScrollView>
+    </ScrollViewWrapper>
   );
 };
 

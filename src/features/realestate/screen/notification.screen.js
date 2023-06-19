@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState } from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Avatar, Badge } from 'react-native-paper';
 
+import BackButton from '../../../components/backbutton-component';
 import DefaultText from '../../../components/defaulttext-componet';
 import Icon from '../../../components/icon-component';
 import SectionHeader from '../../../components/seactionheader-component';
@@ -22,29 +23,16 @@ const NotificationScreen = ({ navigation }) => {
   //  Setting header style
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => (
-        <TouchableOpacity className='ml-5 h-[50px] w-[50px] items-center justify-center rounded-full'>
-          <Icon
-            iconName='chevron-back'
-            bgColor='#DFDFDF'
-            color='#252B5C'
-            boxSize={50}
-            size={20}
-            onPress={() => navigation.goBack()}
-          />
-        </TouchableOpacity>
-      ),
       headerRight: () => (
-        <TouchableOpacity className='mr-5 h-[50px] w-[50px] items-center justify-center rounded-full'>
-          <Icon
-            iconName='trash-outline'
-            bgColor='#DFDFDF'
-            color='#252B5C'
-            boxSize={50}
-            size={20}
-            onPress={() => navigation.goBack()}
-          />
-        </TouchableOpacity>
+        <Icon
+          iconName='trash-outline'
+          bgColor='#DFDFDF'
+          color='#252B5C'
+          boxSize={50}
+          size={20}
+          onPress={() => console.log('Delete notification')}
+          style='mr-5'
+        />
       ),
     });
   }, [navigation]);

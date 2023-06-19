@@ -4,7 +4,7 @@ import AppNavigator from './app.navigator';
 import WalkthroughNavigator from './walkthrough.navigator';
 
 export const Navigator = () => {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
 
   return (
     <NavigationContainer>

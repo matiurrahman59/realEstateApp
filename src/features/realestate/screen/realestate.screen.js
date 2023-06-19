@@ -30,8 +30,8 @@ const userIMage = require('../../../assets/images/user-1.png');
 
 const RealEstateScreen = ({ navigation }) => {
   const [text, setText] = useState('');
-  const [overlay, setOverlay] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
+  // const [overlay, setOverlay] = useState(false);
 
   const featuredEstateList = useMemo(
     () => topLocations.flatMap((item) => item.estates),
@@ -50,11 +50,6 @@ const RealEstateScreen = ({ navigation }) => {
       <ScrollView className='flex-1 bg-white relative'>
         <StatusBar style='auto' />
 
-        {/* Blur overlay */}
-        {overlay && (
-          <View className='absolute h-full w-full bg-secondary/95 z-50' />
-        )}
-
         {/* Bottom sheet modal */}
         <BottomModal
           bottomSheetModalRef={bottomSheetModalRef}
@@ -69,7 +64,6 @@ const RealEstateScreen = ({ navigation }) => {
           className='z-20'
           style={{
             paddingTop: DEVICE.statusBar,
-            paddingBottom: 20,
           }}
         >
           <View className='px-5 pt-2'>
@@ -97,7 +91,10 @@ const RealEstateScreen = ({ navigation }) => {
                   </TouchableOpacity>
 
                   {/* User photo */}
-                  <TouchableOpacity className='w-[50px] border-gray--1 border-2 rounded-full flex items-center justify-center'>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('User')}
+                    className='w-[50px] border-gray--1 border-2 rounded-full flex items-center justify-center'
+                  >
                     <Avatar.Image size={44} source={userIMage} />
                   </TouchableOpacity>
                 </View>
@@ -138,38 +135,39 @@ const RealEstateScreen = ({ navigation }) => {
           <CategoryList category={categoryList} />
 
           {/* Featured Estates */}
-          <View className='pl-6 mt-9'>
-            <View>
-              <SectionHeader
-                leftTitle='Featured Estates'
-                rightTitle='view all'
-                onPress={() => navigation.navigate('FeatureList')}
-              />
-              <FeaturedEstates featuredList={featuredEstateList} />
-            </View>
+          <View className='pt-9'>
+            <SectionHeader
+              leftTitle='Featured Estates'
+              rightTitle='view all'
+              containerStyle='pl-5'
+              onPress={() => navigation.navigate('FeatureList')}
+            />
+            <FeaturedEstates featuredList={featuredEstateList} />
           </View>
 
           {/* Top locations */}
-          <View className='pl-6 mt-9'>
-            <View className='mb-9'>
-              <SectionHeader
-                leftTitle='Top Locations'
-                rightTitle='explore'
-                onPress={() => navigation.navigate('TopLocation')}
-              />
-              <TopLocations topLocations={topLocations} />
-            </View>
+          <View className='pt-9'>
+            <SectionHeader
+              leftTitle='Top Locations'
+              rightTitle='explore'
+              containerStyle='pl-5'
+              onPress={() => navigation.navigate('TopLocation')}
+            />
+            <TopLocations topLocations={topLocations} />
+          </View>
 
-            {/* Top agents */}
-            <View className='mb-9'>
-              <SectionHeader
-                leftTitle='Top Estate Agent'
-                rightTitle='explore'
-                onPress={() => navigation.navigate('TopAgent')}
-              />
-              <TopAgents topAgents={topAgents} />
-            </View>
+          {/* Top agents */}
+          <View className='pt-9'>
+            <SectionHeader
+              leftTitle='Top Estate Agent'
+              rightTitle='explore'
+              containerStyle='pl-5'
+              onPress={() => navigation.navigate('TopAgent')}
+            />
+            <TopAgents topAgents={topAgents} />
+          </View>
 
+          <View className='pl-6 pt-9'>
             {/* Nearby estates */}
             <View>
               <SectionHeader leftTitle='Explore Nearby' />
