@@ -1,16 +1,16 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native'
 
-import CardInfo from '../../../components/cardinfo-component';
+import CardInfo from '../../../components/cardinfo-component'
 
 const NearbyEstates = ({ featuredList }) => {
-  return (
-    <View className='flex-row justify-between flex-wrap pr-6'>
-      {featuredList?.map((item) => (
-        <CardInfo item={item} key={item.id} />
-      ))}
-    </View>
-  );
-};
+	return (
+		<View className="flex-row justify-between flex-wrap">
+			{featuredList?.map(item => (
+				<CardInfo item={item} key={item.id} />
+			))}
+		</View>
+	)
+}
 
-export default NearbyEstates;
+export default NearbyEstates

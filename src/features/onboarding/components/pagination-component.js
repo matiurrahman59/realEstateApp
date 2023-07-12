@@ -1,5 +1,5 @@
-import { StyleSheet, View } from 'react-native';
-import onBoardingData from '../../../assets/dummyData/onBoradingData.json';
+import { View } from 'react-native';
+import { onBoardingData } from '../../../constants';
 
 const Pagination = ({ currentSlideIndex }) => {
   return (

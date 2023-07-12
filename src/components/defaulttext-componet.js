@@ -1,15 +1,14 @@
-import { Text } from 'react-native';
+import { Text } from 'react-native'
 
 const DefaultText = ({ children, className, line, ...rest }) => {
-  const defaultStyles =
-    'font-raleway tracking-wide text-defaultColor text-xs leading-[14px]';
-  const mergedStyles = `${defaultStyles} ${className}`;
+	const defaultStyles = 'font-raleway tracking-wide text-defaultColor text-xs'
+	const mergedStyles = `${defaultStyles} ${className}`
 
-  return (
-    <Text className={mergedStyles} {...rest} numberOfLines={line ? 2 : 1}>
-      {children}
-    </Text>
-  );
-};
+	return (
+		<Text className={mergedStyles} {...rest} numberOfLines={line ? 2 : 1}>
+			{children}
+		</Text>
+	)
+}
 
-export default DefaultText;
+export default DefaultText

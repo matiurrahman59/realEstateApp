@@ -1,28 +1,29 @@
-import React from 'react';
-import { Pressable, Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, View } from 'react-native'
 
 const TouchableButton = ({
-  contentContainerStyle,
-  label,
-  labelStyle,
-  prependComponent,
-  appendComponent,
-  onPress,
-  disabled,
+	contentContainerStyle,
+	onPress,
+	disabled,
+	children,
+	isLoading,
 }) => {
-  return (
-    <TouchableOpacity
-      className={`bg-primary rounded-lg justify-center ${contentContainerStyle}`}
-      disabled={disabled}
-      onPress={onPress}
-    >
-      <View className='items-center justify-center flex-row'>
-        {appendComponent}
-        <Text className={`text-white text-base ${labelStyle}`}>{label}</Text>
-        {prependComponent}
-      </View>
-    </TouchableOpacity>
-  );
-};
+	return (
+		<Pressable
+			className={`bg-primary rounded-lg items-center justify-center w-[80vw] h-[60px] ${contentContainerStyle} ${
+				isLoading && 'bg-primary/80'
+			}`}
+			disabled={disabled}
+			onPress={onPress}
+			android_ripple={{ color: '#6fa032' }}
+			style={({ pressed }) =>
+				pressed && {
+					backgroundColor: '#6fa032',
+				}
+			}
+		>
+			<View className="items-center justify-center flex-row">{children}</View>
+		</Pressable>
+	)
+}
 
-export default TouchableButton;
+export default TouchableButton

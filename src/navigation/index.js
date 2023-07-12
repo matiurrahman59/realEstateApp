@@ -1,14 +1,25 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { useState } from 'react';
-import AppNavigator from './app.navigator';
-import WalkthroughNavigator from './walkthrough.navigator';
+import { NavigationContainer } from '@react-navigation/native'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+
+// internal imports
+import AppNavigator from './app.navigator'
+import WalkthroughNavigator from './walkthrough.navigator'
+import { loadUser } from '../store/userSlice'
 
 export const Navigator = () => {
-  const [user, setUser] = useState(false);
+	const { loading, user } = useSelector(state => state.user)
+	const dispatch = useDispatch()
 
-  return (
-    <NavigationContainer>
-      {user ? <AppNavigator /> : <WalkthroughNavigator />}
-    </NavigationContainer>
-  );
-};
+	useEffect(() => {
+		dispatch(loadUser())
+	}, [])
+
+	if (loading) return null
+
+	return (
+		<NavigationContainer>
+			{user ? <AppNavigator /> : <WalkthroughNavigator />}
+		</NavigationContainer>
+	)
+}
