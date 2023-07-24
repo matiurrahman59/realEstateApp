@@ -16,6 +16,8 @@ import RealEstateScreen from '../features/realestate/screen/realestate.screen'
 import TopAgentScreen from '../features/realestate/screen/topagent.screen'
 import TopLocationScreen from '../features/realestate/screen/toplocation.screen'
 import SearchScreen from '../features/search/screen/search.screen'
+import LocationScreen from '../features/realestate/screen/location.screen'
+import MapScreen from '../features/realestate/screen/map.screen'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -113,7 +115,7 @@ const AppNavigator = () => {
 				headerStyle: {
 					elevation: 0,
 				},
-				headerLeft: () => <BackButton />,
+				// headerLeft: () => <BackButton />,
 			}}
 		>
 			<Stack.Screen
@@ -174,6 +176,14 @@ const AppNavigator = () => {
 				}}
 				component={AgentProfile}
 			/>
+			<Stack.Screen
+				name="Location"
+				options={{
+					headerTitle: '',
+				}}
+				component={LocationScreen}
+			/>
+			<Stack.Screen name="Map" component={MapScreen} />
 		</Stack.Navigator>
 	)
 }

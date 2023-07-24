@@ -1,12 +1,57 @@
-import React from 'react'
-import { Text, View } from 'react-native'
+import { Alert, Text, TouchableOpacity, View } from 'react-native'
 import { Avatar } from 'react-native-paper'
 import DefaultText from './defaulttext-componet'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	PermissionStatus,
+	launchCameraAsync,
+	useCameraPermissions,
+} from 'expo-image-picker'
 
-const UserProfile = ({ user, reverse, badge, topRank, remoteUrl }) => {
-	const authUser = useSelector(state => state.user.user)
-	const { fullName: name, email } = authUser
+import { setUserData } from '../store/userSlice'
+
+const UserProfile = ({ reverse, badge, topRank }) => {
+	const currUser = useSelector(state => state.user.user)
+	const { fullName: name, email, imageUrl } = currUser
+	const dispatch = useDispatch()
+
+	const [cameraPermissionInformation, requestPermission] =
+		useCameraPermissions()
+
+	const verifyPermissions = async () => {
+		if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+			const permissionResponse = await requestPermission()
+
+			return permissionResponse.granted
+		}
+
+		if (cameraPermissionInformation.status === PermissionStatus.DENIED) {
+			Alert.alert(
+				'Insufficient Permissions!',
+				'You need to grant camera access to use this app',
+			)
+			return false
+		}
+
+		return true
+	}
+
+	const takeImageHandler = async () => {
+		const hasPermission = await verifyPermissions()
+
+		if (!hasPermission) {
+			return
+		}
+
+		let image = await launchCameraAsync({
+			allowsEditing: true,
+			quality: 0.5,
+		})
+
+		if (image.assets) {
+			dispatch(setUserData({ ...currUser, imageUrl: image.assets[0].uri }))
+		}
+	}
 
 	return (
 		<View
@@ -14,17 +59,31 @@ const UserProfile = ({ user, reverse, badge, topRank, remoteUrl }) => {
 				reverse ? 'flex-col-reverse' : 'space-y-3'
 			}`}
 		>
-			<View className={`relative ${reverse && 'pt-2'}`}>
+			<TouchableOpacity
+				className={`relative ${reverse && 'pt-2'}`}
+				onPress={takeImageHandler}
+			>
 				{/* {remoteUrl ? (
 					<Avatar.Image size={100} source={{ uri: user.imageUrl }} />
 				) : (
-					<Avatar.Image size={100} source={user.imageUrl} />
+					<Avatar.Icon
+						size={100}
+						icon="account"
+						style={{ backgroundColor: '#cccccc' }}
+					/>
 				)} */}
-				<Avatar.Icon
-					size={100}
-					icon="account"
-					style={{ backgroundColor: '#cccccc' }}
-				/>
+				{/* <Avatar.Image size={100} source={user.imageUrl} /> */}
+				{imageUrl ? (
+					<Avatar.Image size={100} source={{ uri: imageUrl }} />
+				) : (
+					<Avatar.Icon
+						size={100}
+						icon="account"
+						style={{ backgroundColor: '#cccccc' }}
+					/>
+				)}
+
+				{/* </TouchableOpacity> */}
 
 				{badge && (
 					<Avatar.Icon
@@ -46,7 +105,7 @@ const UserProfile = ({ user, reverse, badge, topRank, remoteUrl }) => {
 						</View>
 					</View>
 				)}
-			</View>
+			</TouchableOpacity>
 			<View className="items-center space-y-1">
 				<DefaultText className="text-[14px] font-bold leading-4 font-lato">
 					{name}

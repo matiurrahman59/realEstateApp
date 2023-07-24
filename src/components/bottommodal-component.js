@@ -15,7 +15,7 @@ const BottomModal = ({ bottomSheetModalRef, content }) => {
 	const snapPoints = useMemo(() => ['55%'], [])
 
 	const handleSheetChanges = useCallback(index => {
-		// console.log('handleSheetChanges', index);
+		// console.log('handleSheetChanges', index)
 	}, [])
 
 	return (
@@ -36,5 +36,4 @@ const BottomModal = ({ bottomSheetModalRef, content }) => {
 		</BottomSheetModal>
 	)
 }
-
 export default BottomModal

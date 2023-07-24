@@ -3,12 +3,13 @@ import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import React, { useCallback, useMemo, useRef } from 'react'
 import { ScrollView, TouchableOpacity, View } from 'react-native'
 import { Avatar, Badge } from 'react-native-paper'
+import { useSelector } from 'react-redux'
 
 // internal imports
 import {
 	DEVICE,
 	categoryList,
-	topAgents,
+	topAgents as agentList,
 	topLocations,
 } from '../../../constants'
 import BottomModal from '../../../components/bottommodal-component'
@@ -22,12 +23,29 @@ import NearbyEstates from '../components/nearbyestates-component'
 import TopAgents from '../components/topagents-component'
 import TopLocations from '../components/toplocations-component'
 
+const sortedAgentList = agentList.sort((a, b) => {
+	// Compare by rating first
+	if (a.rating > b.rating) {
+		return -1
+	} else if (a.rating < b.rating) {
+		return 1
+	}
+
+	// If rating is the same, compare by sold quantity
+	if (a.sold > b.sold) {
+		return -1
+	} else if (a.sold < b.sold) {
+		return 1
+	}
+	return 0
+})
+
 const RealEstateScreen = ({ navigation }) => {
+	const { imageUrl } = useSelector(state => state.user.user)
 	const featuredEstateList = useMemo(
 		() => topLocations.flatMap(item => item.estates),
 		[topLocations],
 	)
-
 	const bottomSheetModalRef = useRef(null)
 
 	// callbacks
@@ -38,16 +56,11 @@ const RealEstateScreen = ({ navigation }) => {
 	return (
 		<BottomSheetModalProvider>
 			<ScrollView className="flex-1 bg-white relative">
-				{/* Bottom sheet modal */}
 				<BottomModal
 					bottomSheetModalRef={bottomSheetModalRef}
 					content={<BottomSheetContent />}
 				/>
-
-				{/* background Circle image */}
 				<View className="absolute h-96 w-96 rounded-full bg-secondary/20 -top-28 -left-28 z-10" />
-
-				{/* Main content */}
 				<View
 					className="z-20"
 					style={{
@@ -58,12 +71,8 @@ const RealEstateScreen = ({ navigation }) => {
 						{/* Top header */}
 						<View className="h-[50px]">
 							<View className="flex-row items-center justify-between">
-								{/* User location */}
 								<Location onPress={handlePresentModalPress} />
-
-								{/* right icon container */}
 								<View className="flex-row space-x-2">
-									{/* Notification icon */}
 									<TouchableOpacity
 										onPress={() => navigation.navigate('Notification')}
 										className="w-[50px] h-[50px] flex items-center justify-center rounded-full border-primary border-2 bg-white"
@@ -79,18 +88,19 @@ const RealEstateScreen = ({ navigation }) => {
 											</View>
 										</View>
 									</TouchableOpacity>
-
-									{/* User photo */}
 									<TouchableOpacity
 										onPress={() => navigation.navigate('User')}
 										className="w-[50px] border-gray--1 border-2 rounded-full flex items-center justify-center"
 									>
-										{/* <Avatar.Image size={44} source={userIMage} /> */}
-										<Avatar.Icon
-											size={44}
-											icon="account"
-											style={{ backgroundColor: '#cccccc' }}
-										/>
+										{imageUrl ? (
+											<Avatar.Image size={44} source={{ uri: imageUrl }} />
+										) : (
+											<Avatar.Icon
+												size={44}
+												icon="account"
+												style={{ backgroundColor: '#cccccc' }}
+											/>
+										)}
 									</TouchableOpacity>
 								</View>
 							</View>
@@ -158,7 +168,7 @@ const RealEstateScreen = ({ navigation }) => {
 							containerStyle="pl-5"
 							onPress={() => navigation.navigate('TopAgent')}
 						/>
-						<TopAgents topAgents={topAgents} />
+						<TopAgents topAgents={sortedAgentList} />
 					</View>
 
 					{/* Nearby estates */}

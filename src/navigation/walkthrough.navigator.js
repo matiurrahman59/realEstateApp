@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import React, { useEffect, useState } from 'react'
 
-import BackButton from '../components/backbutton-component'
 import AuthHomeScreen from '../features/authentication/screen/authhome.screen'
 import LoginScreen from '../features/authentication/screen/login.screen'
 import OtpScreen from '../features/authentication/screen/otp.screen'
@@ -42,7 +41,7 @@ const WalkthroughNavigator = () => {
 				headerStyle: {
 					elevation: 0,
 				},
-				headerLeft: () => <BackButton />,
+				// headerLeft: () => <BackButton />,
 			}}
 		>
 			{value && (

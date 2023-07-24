@@ -1,6 +1,12 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
-import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import {
+	Keyboard,
+	StyleSheet,
+	TextInput,
+	TouchableOpacity,
+	View,
+} from 'react-native'
 import Toast from 'react-native-toast-message'
 import { useDispatch } from 'react-redux'
 import { ActivityIndicator } from 'react-native-paper'
@@ -10,7 +16,7 @@ import HeadingText from '../components/headingtext-component'
 import CustomCountDown from '../components/timer-component'
 import { setUserData } from '../../../store/userSlice'
 
-const OtpScreen = ({ route }) => {
+const OtpScreen = ({ route, navigation }) => {
 	const data = route.params
 	const dispatch = useDispatch()
 
@@ -26,11 +32,20 @@ const OtpScreen = ({ route }) => {
 		refs[0].current.focus()
 	}, [])
 
+	// header shown false when loading spinner visible
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			headerShown: !isInputComplete,
+		})
+	}, [isInputComplete, navigation])
+
+	// checking input filled or not
 	useEffect(() => {
 		const hasEmptyInput = otp.some(digit => digit === '')
 		setIsInputComplete(!hasEmptyInput)
 	}, [otp])
 
+	// reset timer
 	const timerResetHandler = () => {
 		setResetTimer(true)
 	}
@@ -61,6 +76,8 @@ const OtpScreen = ({ route }) => {
 					})
 					dispatch(setUserData(data))
 				} else {
+					setIsInputComplete(false)
+					setOtp(['', '', '', ''])
 					Toast.show({
 						type: 'error',
 						text1: 'Invalid code 💣',
@@ -75,7 +92,10 @@ const OtpScreen = ({ route }) => {
 	return (
 		<View className="flex-1 bg-white px-5 relative">
 			{isInputComplete && (
-				<View className="absolute top-0 right-0 left-0 bottom-0 bg-gray-500/75 z-50 items-center justify-center">
+				<View
+					style={{ ...StyleSheet.absoluteFillObject }}
+					className=" bg-gray-500/75 z-50 items-center justify-center"
+				>
 					<ActivityIndicator animating={true} color="#8BC83F" size="large" />
 				</View>
 			)}
@@ -135,4 +155,23 @@ const OtpScreen = ({ route }) => {
 	)
 }
 
+// OtpScreen.navigationOptions = ({ navigation }) => ({
+// 	headerShown: !navigation.state.params.isInputComplete,
+// 	headerShown: false,
+// })
+
 export default OtpScreen
+
+// const styles = StyleSheet.create({
+// 	overlay: {
+// 		...StyleSheet.absoluteFillObject,
+// 		justifyContent: 'center',
+// 		alignItems: 'center',
+// 		backgroundColor: 'rgba(0, 0, 0, 0.5)',
+// 	},
+// 	spinnerContainer: {
+// 		backgroundColor: '#fff',
+// 		padding: 20,
+// 		borderRadius: 8,
+// 	},
+// })

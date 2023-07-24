@@ -1,19 +1,17 @@
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { Image, TouchableOpacity, View } from 'react-native'
 import { Avatar } from 'react-native-paper'
+import { useDispatch, useSelector } from 'react-redux'
 
-import TouchableButton from '../../../components/button-component'
-import DefaultText from '../../../components/defaulttext-componet'
-import { useDispatch } from 'react-redux'
-import { logOutUser } from '../../../store/userSlice'
-import ButtonText from '../../../components/buttonText-component'
-
-const userIMage = require('../../../assets/images/user-2.png')
 const googleIcon = require('../../../assets/images/Login/Google.png')
 const facebookIcon = require('../../../assets/images/Login/Facebook.png')
+import TouchableButton from '../../../components/button-component'
+import DefaultText from '../../../components/defaulttext-componet'
+import ButtonText from '../../../components/buttonText-component'
+import { logOutUser } from '../../../store/userSlice'
 
 const SettingScreen = ({ route }) => {
-	const { fullName, email, imageUrl, phone } = route.params
+	const { fullName, email, imageUrl } = useSelector(state => state.user.user)
 	const dispatch = useDispatch()
 
 	const inputClassName =
@@ -29,12 +27,15 @@ const SettingScreen = ({ route }) => {
 
 			{/* User Image */}
 			<View className="py-5 items-center">
-				{/* <Avatar.Image size={100} source={userIMage} /> */}
-				<Avatar.Icon
-					size={100}
-					icon="account"
-					style={{ backgroundColor: '#cccccc' }}
-				/>
+				{imageUrl ? (
+					<Avatar.Image size={100} source={{ uri: imageUrl }} />
+				) : (
+					<Avatar.Icon
+						size={100}
+						icon="account"
+						style={{ backgroundColor: '#cccccc' }}
+					/>
+				)}
 			</View>
 
 			{/* User details */}

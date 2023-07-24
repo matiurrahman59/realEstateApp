@@ -5,6 +5,7 @@ import { Avatar } from 'react-native-paper'
 import TouchableButton from '../../../components/button-component'
 import DefaultText from '../../../components/defaulttext-componet'
 import ButtonText from '../../../components/buttonText-component'
+import { useNavigation } from '@react-navigation/native'
 const locations = [
 	{
 		id: 1,
@@ -17,6 +18,7 @@ const locations = [
 ]
 
 const BottomSheetContent = () => {
+	const navigation = useNavigation()
 	const [activeLocation, setActiveLocation] = useState(1)
 
 	return (
@@ -67,7 +69,7 @@ const BottomSheetContent = () => {
 
 			{/* Button */}
 			<View className="my-6 items-center">
-				<TouchableButton>
+				<TouchableButton onPress={() => navigation.navigate('Location')}>
 					<ButtonText type="primary">Choose location</ButtonText>
 				</TouchableButton>
 			</View>

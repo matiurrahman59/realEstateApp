@@ -33,7 +33,6 @@ const SearchScreen = ({ navigation }) => {
 					boxSize={50}
 					size={20}
 					style="mr-5"
-					// onPress={() => console.log('search screen')}
 				/>
 			),
 		})

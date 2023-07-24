@@ -26,8 +26,6 @@ const LoginScreen = () => {
 
 	const [value] = useAsyncStorage('@user')
 
-	console.log(value)
-
 	// form submit handler
 	const onSubmit = async data => {
 		setLoading(true)

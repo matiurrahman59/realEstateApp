@@ -25,13 +25,16 @@ const userSlice = createSlice({
 			state.isAuthenticated = false
 			state.loading = false
 		},
+		setUserLocation(state, action) {
+			state.user.location = action.payload
+		},
 		setUserLoading(state) {
 			state.loading = true
 		},
 	},
 })
 
-export const { setUser, clearUser, setUserLoading, onLogout } =
+export const { setUser, clearUser, setUserLoading, onLogout, setUserLocation } =
 	userSlice.actions
 export default userSlice.reducer
 
