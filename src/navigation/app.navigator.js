@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import { View } from 'react-native'
 
-import BackButton from '../components/backbutton-component'
 import FavouriteScreen from '../features/favourites/screen/favourite.screen'
 import ProfileScreen from '../features/profile/screen/profile.screen'
 import SettingScreen from '../features/profile/screen/setting.screen'

@@ -9,20 +9,20 @@ import { useCallback } from 'react'
 import ButtonText from '../../../components/buttonText-component'
 
 const AuthHomeScreen = ({ navigation }) => {
-	useFocusEffect(
-		useCallback(() => {
-			const onBackPress = () => {
-				// Prevent the default behavior of going back
-				return true
-			}
+	// useFocusEffect(
+	// 	useCallback(() => {
+	// 		// Prevent the default behavior of going back
+	// 		const onBackPress = () => {
+	// 			return true
+	// 		}
 
-			BackHandler.addEventListener('hardwareBackPress', onBackPress)
+	// 		BackHandler.addEventListener('hardwareBackPress', onBackPress)
 
-			return () => {
-				BackHandler.removeEventListener('hardwareBackPress', onBackPress)
-			}
-		}, []),
-	)
+	// 		return () => {
+	// 			BackHandler.removeEventListener('hardwareBackPress', onBackPress)
+	// 		}
+	// 	}, []),
+	// )
 
 	return (
 		<View className="flex-1 bg-white">

@@ -9,7 +9,7 @@ export const DEVICE = {
 	statusBar,
 }
 
-export const BrandLogo = require('../assets/images/logo.png')
+export const BrandLogo = require('../assets/images/new-logo.png')
 export const welcomeImage = require('../assets/images/Onboarding/welcome-image.png')
 export const userIMage = require('../assets/images/user-2.png')
 export const userIMageTwo = require('../assets/images/user-3.png')

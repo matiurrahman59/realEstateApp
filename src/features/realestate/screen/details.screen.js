@@ -429,12 +429,10 @@ const EstateDetailsScreen = ({ navigation, route }) => {
 				</View>
 
 				{/* Button */}
-				<View className="px-6 pb-5">
-					<TouchableButton
-						label="View all reviews"
-						contentContainerStyle="bg-gray--3"
-						labelStyle="font-raleway tracking-wide text-secondary text-xs leading-[14px] py-[19px]"
-					/>
+				<View className="px-6 items-center mb-3">
+					<TouchableButton contentContainerStyle="w-full bg-gray--3">
+						<DefaultText>View all reviews</DefaultText>
+					</TouchableButton>
 				</View>
 			</ScrollView>
 		</View>

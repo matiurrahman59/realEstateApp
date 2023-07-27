@@ -15,11 +15,11 @@ export const Navigator = () => {
 		dispatch(loadUser())
 	}, [])
 
-	if (loading) return null
-
 	return (
-		<NavigationContainer>
-			{user ? <AppNavigator /> : <WalkthroughNavigator />}
-		</NavigationContainer>
+		loading != null && (
+			<NavigationContainer>
+				{user ? <AppNavigator /> : <WalkthroughNavigator />}
+			</NavigationContainer>
+		)
 	)
 }

@@ -14,9 +14,15 @@ const WelcomeScreen = ({ navigation }) => {
 				colors={['rgba(33, 98, 138, .3)', 'rgba(35, 79, 104, 1)']}
 				className="absolute w-full h-full"
 			/>
+			<LinearGradient
+				colors={['rgba(33, 98, 138, 0.00)', '#1F4C6B']}
+				className="absolute w-full bottom-0 h-1/2"
+			/>
 			<View>
-				<Image source={BrandLogo} className="w-[223px] h-[210px]" />
-				<Text className="text-white text-4xl text-center -mt-9">{`Rise \n Real Estate`}</Text>
+				<View className="w-[172px] h-[155px]">
+					<Image source={BrandLogo} className="w-full h-full  scale-150" />
+				</View>
+				<Text className="text-white text-4xl text-center -mt-8">{`Rise \n Real Estate`}</Text>
 			</View>
 			<View className="absolute bottom-5 items-center">
 				<TouchableButton

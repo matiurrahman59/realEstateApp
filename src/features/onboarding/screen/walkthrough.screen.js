@@ -1,17 +1,12 @@
 import React, { useRef, useState } from 'react'
-import {
-	FlatList,
-	Image,
-	SafeAreaView,
-	TouchableOpacity,
-	View,
-} from 'react-native'
+import { FlatList, Image, TouchableOpacity, View } from 'react-native'
 
 import TouchableButton from '../../../components/button-component'
 import { BrandLogo, DEVICE, onBoardingData } from '../../../constants'
 import OnboardingSlide from '../components/onboardingSlide-component'
 import Pagination from '../components/pagination-component'
 import ButtonText from '../../../components/buttonText-component'
+import { SafeArea } from '../../../components/safearea-component'
 
 const WalkthroughScreen = ({ navigation }) => {
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
@@ -44,20 +39,17 @@ const WalkthroughScreen = ({ navigation }) => {
 	}
 
 	return (
-		<SafeAreaView
-			style={{
-				flex: 1,
-				marginTop: DEVICE.statusBar,
-			}}
-		>
+		<SafeArea>
 			<View className="flex-row justify-between items-center px-6">
 				<Image source={BrandLogo} className="h-[75px] w-[80px] -ml-4" />
-				<TouchableOpacity
-					className="h-[38px] w-[86px] items-center justify-center rounded-full bg-gray--1"
-					onPress={skip}
-				>
-					<ButtonText type="small">skip</ButtonText>
-				</TouchableOpacity>
+				{currentSlideIndex !== 2 && (
+					<TouchableOpacity
+						className="h-[38px] w-[86px] items-center justify-center rounded-full bg-gray--1"
+						onPress={skip}
+					>
+						<ButtonText type="small">skip</ButtonText>
+					</TouchableOpacity>
+				)}
 			</View>
 
 			<FlatList
@@ -67,7 +59,8 @@ const WalkthroughScreen = ({ navigation }) => {
 				showsHorizontalScrollIndicator={false}
 				onMomentumScrollEnd={updateCurrentSlideIndex}
 				data={onBoardingData}
-				renderItem={({ item, index }) => <OnboardingSlide item={item} />}
+				renderItem={({ item }) => <OnboardingSlide item={item} />}
+				keyExtractor={item => item.id}
 			/>
 
 			<View className="absolute bottom-0 left-0 right-0 items-center justify-center py-8">
@@ -85,7 +78,7 @@ const WalkthroughScreen = ({ navigation }) => {
 					</TouchableButton>
 				</View>
 			</View>
-		</SafeAreaView>
+		</SafeArea>
 	)
 }
 

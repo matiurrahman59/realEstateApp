@@ -7,75 +7,71 @@ import OtpScreen from '../features/authentication/screen/otp.screen'
 import SignUpScreen from '../features/authentication/screen/signup.screen'
 import WalkthroughScreen from '../features/onboarding/screen/walkthrough.screen'
 import WelcomeScreen from '../features/onboarding/screen/welcome.screen'
-import useAsyncStorage from '../hooks/useStorage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Stack = createStackNavigator()
 
 const WalkthroughNavigator = () => {
-	const [loading, setLoading] = useState(true)
-	const [value, setValue] = useAsyncStorage('firstRender')
+	const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null)
 
 	useEffect(() => {
+		const checkFirstRender = async () => {
+			const appData = await AsyncStorage.getItem('isAppFirstLaunched')
+			if (appData == null) {
+				setIsAppFirstLaunched(true)
+				AsyncStorage.setItem('isAppFirstLaunched', 'false')
+			} else {
+				setIsAppFirstLaunched(false)
+			}
+		}
+
 		checkFirstRender()
 	}, [])
 
-	const checkFirstRender = async () => {
-		try {
-			if (value !== null) {
-				setLoading(false)
-			} else {
-				setValue('false')
-				setLoading(false)
-			}
-		} catch (error) {
-			console.log('Error checking first render:', error)
-		}
-	}
-
-	if (loading) return null
-
 	return (
-		<Stack.Navigator
-			screenOptions={{
-				headerShown: false,
-				headerStyle: {
-					elevation: 0,
-				},
-				// headerLeft: () => <BackButton />,
-			}}
-		>
-			{value && (
-				<>
-					<Stack.Screen name="Welcome" component={WelcomeScreen} />
-					<Stack.Screen name="Walkthrough" component={WalkthroughScreen} />
-				</>
-			)}
-			<Stack.Screen name="AuthHomePage" component={AuthHomeScreen} />
-			<Stack.Screen
-				name="Login"
-				options={{
-					headerTitle: '',
-					headerShown: true,
+		isAppFirstLaunched != null && (
+			<Stack.Navigator
+				screenOptions={{
+					headerShown: false,
+					headerStyle: {
+						elevation: 0,
+					},
 				}}
-				component={LoginScreen}
-			/>
-			<Stack.Screen
-				name="Signup"
-				options={{
-					headerTitle: '',
-					headerShown: true,
-				}}
-				component={SignUpScreen}
-			/>
-			<Stack.Screen
-				name="OTP"
-				options={{
-					headerTitle: '',
-					headerShown: true,
-				}}
-				component={OtpScreen}
-			/>
-		</Stack.Navigator>
+			>
+				{isAppFirstLaunched && (
+					<>
+						<Stack.Screen name="Welcome" component={WelcomeScreen} />
+						<Stack.Screen name="Walkthrough" component={WalkthroughScreen} />
+					</>
+				)}
+
+				<Stack.Screen name="AuthHomePage" component={AuthHomeScreen} />
+				<Stack.Screen
+					name="Login"
+					options={{
+						headerTitle: '',
+						headerShown: true,
+					}}
+					component={LoginScreen}
+				/>
+				<Stack.Screen
+					name="Signup"
+					options={{
+						headerTitle: '',
+						headerShown: true,
+					}}
+					component={SignUpScreen}
+				/>
+				<Stack.Screen
+					name="OTP"
+					options={{
+						headerTitle: '',
+						headerShown: true,
+					}}
+					component={OtpScreen}
+				/>
+			</Stack.Navigator>
+		)
 	)
 }
 
